@@ -1,4 +1,24 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const path = require('path');
 
-module.exports = nextConfig
+const nextConfig = {
+	reactStrictMode: false,
+	swcMinify: true,
+	optimizeFonts: true,
+	images: {
+		domains: ['127.0.0.1'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: '**',
+				port: '',
+				pathname: '**',
+			},
+		],
+	},
+	sassOptions: {
+		includePaths: [path.join(__dirname, 'styles')],
+	},
+};
+
+module.exports = nextConfig;

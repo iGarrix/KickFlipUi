@@ -1,0 +1,33 @@
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Fick Flip Dropshipping',
+	description: 'Kick Flip Dropshipping Platform',
+};
+
+export default function ClientLayout(props: {
+	children: React.ReactNode;
+	clothesView: React.ReactNode;
+	shoesView: React.ReactNode;
+	bagsView: React.ReactNode;
+	accessoriesView: React.ReactNode;
+	mainwidget: React.ReactNode;
+}) {
+	return (
+		<div className="flex flex-col gap-[3rem]">
+			{props.children}
+			<br />
+			{props.mainwidget}
+			<h1 className="font-spacemono font-black text-3xl">
+				Items shipping{' '}
+				<FontAwesomeIcon icon={faArrowRight} className="-rotate-45" />
+			</h1>
+			{props.clothesView}
+			{props.shoesView}
+			{props.bagsView}
+			{props.accessoriesView}
+		</div>
+	);
+}
