@@ -16,19 +16,22 @@ export interface BineIncommingTypeProps {
 }
 
 export interface IAuthorizateResponse<TInstance> {
-	refreshToken: string;
 	accessToken: string;
 	instance: TInstance;
 }
 
-export interface BineResponse<TBineDataType> {
-	totalObj: number;
-	totalPages: number;
+export interface IBineMeta {
+	total: number;
+	lastPage: number;
 	currentPage: number;
-	nextPage: number | null;
-	prevPage: number | null;
-	takes: number;
-	dataSet: Array<TBineDataType>;
+	perPage: number;
+	prev: number | null;
+	next: number | null;
+}
+
+export interface BineResponse<TBineDataType> {
+	meta: IBineMeta;
+	data: Array<TBineDataType>;
 }
 
 export interface IAuthenticateUserRequest {

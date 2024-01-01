@@ -7,7 +7,10 @@ const agent = new https.Agent({
 
 const axiosHttp_instance = axios.create({
 	httpsAgent: agent,
-	baseURL: process.env.NODE_ENV === 'development' ? process.env.NEXT_TEST_API_URL : process.env.NEXT_RELEASE_API_URL,
+	baseURL:
+		process.env.NODE_ENV === 'development'
+			? process.env.NEXT_PUBLIC_TEST_API_URL
+			: process.env.NEXT_PUBLIC_RELEASE_API_URL,
 	headers: {
 		'Content-type': 'application/json',
 	},

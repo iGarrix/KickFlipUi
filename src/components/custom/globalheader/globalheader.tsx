@@ -22,7 +22,7 @@ export const GlobalHeader: React.FC<IGlobalHeaderProps> = ({ ...props }) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	return (
-		<header className="fixed top-0 left-0 h-screen flex flex-col items-center py-[5vh] whitespace-nowrap overflow-y-auto z-20 bg-light hidescrollbar">
+		<header className="fixed top-0 left-0 h-screen flex flex-col items-center py-[5vh] whitespace-nowrap overflow-y-auto z-20 bg-light hidescrollbar xs:hidden lg:flex">
 			<button
 				onClick={() => {
 					router.push('/');

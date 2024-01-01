@@ -13,7 +13,7 @@ export default function ClientPage() {
 	const brands = [
 		'https://media.gq-magazine.co.uk/photos/633eab4246e9ddeb400c0d5e/master/pass/Nike-air-max.jpg',
 		'https://rukminim2.flixcart.com/image/850/1000/xif0q/shoe/f/i/x/-original-imagfywbuenspqur-bb.jpeg?q=90',
-		'https://cloud.sneakerdistrict.com/products/18267/centennial-85-low-clear-green-core-white-easy-yellow_phpdT7z1x-1600.jpg',
+		'https://yt3.googleusercontent.com/FHQKP9GpufnM1A-xG9w7-sQviy_1e3YEpM1OvBzg9oGklTbnH1nIa_uEvtqfDV0J_R8WS15MkQ=s900-c-k-c0x00ffffff-no-rj',
 		'https://media.voguebusiness.com/photos/64ba82d8b340082dbcb8e39f/1:1/w_2000,h_2000,c_limit/GUCCI-MATERIAL-NFT-REWARD-voguebus-story.jpg',
 		'https://i.pinimg.com/736x/64/89/11/64891131cbb8ddd51c9d0580aa13ac88.jpg',
 		'https://media2.symbol.ua/aio-images/fe/ef/feef1aba3d94eb9f9d4eb1fa0368811a/6dda3259-0e0a-401f-8b52-04062bd37367.jpg',
@@ -28,7 +28,7 @@ export default function ClientPage() {
 	return (
 		<div className="h-full w-full overflow-x-hidden">
 			<div className="flex flex-col w-full">
-				<h1 className="font-spacemono font-black text-3xl">
+				<h1 className="font-spacemono font-black text-3xl xs:w-[95%] xs:mx-auto lg:w-full">
 					Brands <FontAwesomeIcon icon={faArrowRight} className="-rotate-45" />
 				</h1>
 				<br />

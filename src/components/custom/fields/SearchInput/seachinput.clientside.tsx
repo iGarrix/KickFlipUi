@@ -1,7 +1,7 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { Fragment, useState, useTransition } from 'react';
 import { SearchInput } from './searchinput';
 
 export const SearchClient: React.FC<any> = (props: {
@@ -13,6 +13,8 @@ export const SearchClient: React.FC<any> = (props: {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const [val, setVal] = useState('');
+	const [isPending, startTransition] = useTransition();
+	const pathname = usePathname();
 
 	function onSubmit(e: any) {
 		e.preventDefault();
@@ -30,8 +32,9 @@ export const SearchClient: React.FC<any> = (props: {
 			const search = current.toString();
 			const query = search ? `?${search}` : '';
 
-			//router.push(`${pathname}/${query}`);
-			router.push(`${props.pathname}/${query}`);
+			startTransition(() => {
+				router.push(`${props.pathname ? props.pathname : pathname}/${query}`);
+			});
 		}
 	}
 
@@ -39,11 +42,15 @@ export const SearchClient: React.FC<any> = (props: {
 		<form onSubmit={onSubmit} className="grow">
 			<SearchInput
 				placeholder={props.placeholder}
-				defValue={props.defValue}
+				defValue={props.defValue ? props.defValue : searchParams.get('s')}
+				isPending={isPending}
 				onChange={(e: any) => {
 					setVal(e.target.value);
 				}}
 			/>
+			{isPending && (
+				<div className="fixed top-0 left-0 animate-pulse z-[1000] bg-blue-500/80 h-[5px] w-full"></div>
+			)}
 		</form>
 	);
 };

@@ -1,4 +1,4 @@
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ISearchInputProps } from './searchinput.types';
 
@@ -13,8 +13,10 @@ export const SearchInput: React.FC<ISearchInputProps> = ({ ...props }) => {
 			/>
 			<button type="submit">
 				<FontAwesomeIcon
-					icon={faSearch}
-					className="text-dark/80 cursor-pointer"
+					icon={props.isPending ? faSpinner : faSearch}
+					className={`text-dark/80 cursor-pointer ${
+						props.isPending && 'animate-spin'
+					}`}
 				/>
 			</button>
 		</div>

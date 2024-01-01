@@ -20,7 +20,7 @@ export default function ClientLayout(props: {
 			{props.children}
 			<br />
 			{props.mainwidget}
-			<h1 className="font-spacemono font-black text-3xl">
+			<h1 className="font-spacemono font-black text-3xl xs:w-[95%] lg:w-full mx-auto">
 				Items shipping{' '}
 				<FontAwesomeIcon icon={faArrowRight} className="-rotate-45" />
 			</h1>

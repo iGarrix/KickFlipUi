@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function MainWidgets() {
 	return (
-		<div className="flex gap-[2vw] items-center flex-wrap w-[95%] mr-auto">
+		<div className="flex gap-[2vw] items-center flex-wrap w-[95%] xs:flex-col xs:items-stretch xs:mx-auto md:flex-row md:items-center lg:mx-0 lg:mr-auto">
 			<div className="bg-dark/20 shadow-xl shadow-dark/5 p-[1rem] rounded-sm font-spacemono font-semibold cursor-pointer transition-all hover:bg-dark/30 hover:-translate-y-2">
 				<h2 className="text-2xl">
 					<FontAwesomeIcon icon={faCartPlus} /> Cart
