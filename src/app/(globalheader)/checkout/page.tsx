@@ -19,7 +19,8 @@ export default function Checkout() {
 						title: 'Select positions',
 						children: (
 							<div className="py-[1rem]">
-								Test checkout step 1 [added new feature or fix]
+								<span>Test checkout step 1 [added new feature or fix]</span>{' '}
+								<span>from checkout 2 to main</span>
 							</div>
 						),
 					},
