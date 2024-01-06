@@ -3,13 +3,15 @@
 import { Btn } from '@/components/custom/Btn/btn';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
-	GetPositionImage,
 	IPosition,
-	IPositionImage,
-} from '@/serverside/apis/positions/positions.types';
+	GetPositionImage,
+} from '@/lib/apis/positions/positions.types';
+import usePositionStorage from '@/lib/zustand_hooks/cartStorage/cartStorage';
 import { faSpinner, faEuro, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 interface IClient_Keytag_1Props {
 	findPos: IPosition;
@@ -22,6 +24,8 @@ export const Client_Keytag_1: React.FC<IClient_Keytag_1Props> = ({
 	const [selectedImage, setSelectedImage] = useState(
 		GetPositionImage(findPos.image[0]?.src)
 	);
+	const storage = usePositionStorage();
+	const router = useRouter();
 	return (
 		<div className="flex gap-[4rem] justify-center xs:flex-col 2xl:flex-row">
 			<div className="flex gap-[1rem] xs:flex-col-reverse md:flex-row">
@@ -81,7 +85,34 @@ export const Client_Keytag_1: React.FC<IClient_Keytag_1Props> = ({
 				</div>
 				<div className="flex gap-[1rem]">
 					<Btn className="grow">Add to card</Btn>
-					<button className="bg-white text-dark flex items-center justify-center p-[0.8rem] transition-all hover:bg-dark hover:text-light">
+					<button
+						className="bg-white text-dark flex items-center justify-center p-[0.8rem] transition-all hover:bg-dark hover:text-light"
+						onClick={() => {
+							try {
+								storage.onAddToLiked(findPos);
+								toast(findPos.name, {
+									description: 'Position has been added to liked list',
+									action: {
+										label: 'Go to liked list',
+										onClick: () => {
+											router.push('/account/liked');
+										},
+									},
+									duration: 2000,
+								});
+							} catch (error) {
+								toast(findPos.name, {
+									description: error as string,
+									action: {
+										label: 'Go to liked list',
+										onClick: () => {
+											router.push('/account/liked');
+										},
+									},
+									duration: 1000,
+								});
+							}
+						}}>
 						<FontAwesomeIcon icon={faHeart} className="text-xl leading-none" />
 					</button>
 				</div>

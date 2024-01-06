@@ -1,7 +1,4 @@
 import { Skeleton } from '@/components/ui/skeleton';
-import { faHeart, faCartPlus, faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
 
 export default function LoadingSeachlayout() {
 	return (

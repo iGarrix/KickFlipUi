@@ -1,12 +1,14 @@
 import { GlobalHeader } from '@/components/custom/globalheader/globalheader';
 import { GlobalPhoneHeader } from '@/components/custom/globalphoneheader/globalphoneheader';
 import { Fragment } from 'react';
+import { Toaster } from 'sonner';
 
 export default function GlobalHeaderLayout(props: {
 	children: React.ReactNode;
 }) {
 	return (
 		<Fragment>
+			<Toaster />
 			<GlobalPhoneHeader />
 			<div className="relative flex gap-[7vw] min-h-svh pt-[5vh] xs:pt-[2vh] lg:pt-[5vh]">
 				<GlobalHeader />

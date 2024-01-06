@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { faSpinner, faEuro, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRouter } from 'next/navigation';
-import { IPosition } from '@/serverside/apis/positions/positions.types';
+import { IPosition } from '@/lib/apis/positions/positions.types';
 
 //import style from './scss.style.module.scss';
 

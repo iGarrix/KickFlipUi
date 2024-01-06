@@ -11,7 +11,6 @@ interface IOrderCardProps {
 	title: string;
 	desc: string;
 	size: string;
-	quantity: number;
 	total: string;
 	shipping: string;
 	onViewDetail?: () => void;
@@ -38,7 +37,7 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ ...props }) => {
 			<aside className="flex p-[1rem] items-center gap-[2rem]">
 				<Avatar className="w-[90px] h-[90px] border-2 border-dark/80">
 					<AvatarImage
-						className="w-full h-full bg-cover bg-center"
+						className="w-full h-full object-cover bg-center"
 						src={props.src}
 					/>
 					<AvatarFallback className="w-full h-full flex justify-center items-center">
@@ -56,7 +55,6 @@ export const OrderCard: React.FC<IOrderCardProps> = ({ ...props }) => {
 					<h3 className="font-semibold">
 						Size: <span className="uppercase">{props.size}</span>
 					</h3>
-					<p className="font-semibold">Quantity: {props.quantity}</p>
 				</div>
 				<p className="flex gap-[1rem] items-center font-semibold text-2xl ml-auto">
 					<FontAwesomeIcon icon={faEuro} />

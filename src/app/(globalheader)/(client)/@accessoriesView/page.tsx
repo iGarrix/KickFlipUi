@@ -1,6 +1,6 @@
 import { ItemCard } from '@/components/custom/cards/itemcard/itemcard';
-import { GetPositions } from '@/serverside/apis/positions/positions.controller';
-import { GetPositionImage } from '@/serverside/apis/positions/positions.types';
+import { GetPositions } from '@/lib/apis/positions/positions.controller';
+import { GetPositionImage } from '@/lib/apis/positions/positions.types';
 import Link from 'next/link';
 
 export default async function AccessoriesView() {

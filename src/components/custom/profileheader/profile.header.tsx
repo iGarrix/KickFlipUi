@@ -13,11 +13,11 @@ export const ProfileHeader: React.FC<IProfileHeaderProps> = ({ ...props }) => {
 		<header>
 			<button
 				className={`px-[1rem] py-[0.5rem] font-spacemono font-semibold outline-none ${
-					pathname === '/profile' &&
+					pathname === '/account' &&
 					'border-x-2 border-t-2 border-x-dark/80 border-t-dark/80 border-b-0'
 				}`}
 				onClick={() => {
-					router.push('/profile');
+					router.push('/account');
 				}}>
 				Orders & Returns
 			</button>
@@ -27,7 +27,7 @@ export const ProfileHeader: React.FC<IProfileHeaderProps> = ({ ...props }) => {
 					'border-x-2 border-t-2 border-x-dark/80 border-t-dark/80 border-b-0'
 				}`}
 				onClick={() => {
-					router.push('/profile/cart');
+					router.push('/account/cart');
 				}}>
 				Cart
 			</button>
@@ -37,7 +37,7 @@ export const ProfileHeader: React.FC<IProfileHeaderProps> = ({ ...props }) => {
 					'border-x-2 border-t-2 border-x-dark/80 border-t-dark/80 border-b-0'
 				}`}
 				onClick={() => {
-					router.push('/profile/liked');
+					router.push('/account/liked');
 				}}>
 				Liked
 			</button>
@@ -47,7 +47,7 @@ export const ProfileHeader: React.FC<IProfileHeaderProps> = ({ ...props }) => {
 					'border-x-2 border-t-2 border-x-dark/80 border-t-dark/80 border-b-0'
 				}`}
 				onClick={() => {
-					router.push('/profile/create-item');
+					router.push('/account/create-item');
 				}}>
 				Add an item
 			</button>
@@ -57,7 +57,7 @@ export const ProfileHeader: React.FC<IProfileHeaderProps> = ({ ...props }) => {
 					'border-x-2 border-t-2 border-x-dark/80 border-t-dark/80 border-b-0'
 				}`}
 				onClick={() => {
-					router.push('/profile/settings');
+					router.push('/account/settings');
 				}}>
 				Settings
 			</button>

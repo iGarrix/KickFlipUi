@@ -1,0 +1,43 @@
+.formikfieldWrapper {
+	@apply border rounded-lg border-light px-[1rem] flex items-center w-full;
+
+	&.error {
+		@apply text-rose-500 border-rose-500/40;
+	}
+
+	&.success {
+		@apply text-slate-400 border-slate-300/80;
+	}
+
+	.icon {
+		@apply cursor-pointer w-[20px] flex;
+	}
+
+	.inp {
+		@apply outline-none focus:outline-none py-[0.5rem] bg-transparent w-full;
+
+		&:focus {
+			@apply text-dark;
+		}
+
+		&.ificon {
+			@apply px-[1rem];
+		}
+
+		&.ifnoicon {
+			@apply px-0;
+		}
+
+		.error {
+			@apply text-rose-500;
+		}
+
+		.success {
+			@apply text-green-400;
+		}
+
+		&:-webkit-autofill {
+			background-clip: text;
+		}
+	}
+}

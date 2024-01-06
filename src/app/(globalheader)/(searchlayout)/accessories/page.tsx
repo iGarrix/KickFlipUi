@@ -1,9 +1,9 @@
-import { GetPositions } from '@/serverside/apis/positions/positions.controller';
 import Link from 'next/link';
 import { Fragment } from 'react';
 import { Client_SearchLayoyt_1 } from '../Client_SearchLayout_1';
 import { Paginator } from '@/components/custom/paginator/paginator';
 import { Metadata } from 'next';
+import { GetPositions } from '@/lib/apis/positions/positions.controller';
 
 export const metadata: Metadata = {
 	title: 'Accessories items, Fick Flip Dropshipping',

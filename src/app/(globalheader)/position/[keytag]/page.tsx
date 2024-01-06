@@ -1,7 +1,7 @@
-import { GetPositionByCode } from '@/serverside/apis/positions/positions.controller';
 import NotFoundPosition from './not-found';
 import { Client_Keytag_1 } from './client_keytag_1';
 import { Client_Keytag_2 } from './client_keytag_2';
+import { GetPositionByCode } from '@/lib/apis/positions/positions.controller';
 export default async function PositionDetailPage(props: {
 	params: { keytag: string };
 }) {

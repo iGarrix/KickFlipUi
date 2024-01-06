@@ -13,14 +13,18 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 } from '@/components/ui/drawer';
-import {
-	GetPositionImage,
-	IPosition,
-} from '@/serverside/apis/positions/positions.types';
 import { faEuro, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
+import {
+	IPosition,
+	GetPositionImage,
+} from '@/lib/apis/positions/positions.types';
+import { useLocalStorage } from '@uidotdev/usehooks';
+import usePositionStorage from '@/lib/zustand_hooks/cartStorage/cartStorage';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 interface Client_SearchLayoyt_1Props {
 	data?: IPosition[];
@@ -31,7 +35,9 @@ export const Client_SearchLayoyt_1: React.FC<Client_SearchLayoyt_1Props> = ({
 	...props
 }) => {
 	const [selectedItem, setSelectedItemKey] = useState<IPosition | null>(null);
+	const cart = usePositionStorage();
 	const isPhone = useMediaQuery({ query: '(max-width: 767px)' });
+	const router = useRouter();
 	return (
 		data && (
 			<div className="flex gap-[2rem]">
@@ -49,6 +55,32 @@ export const Client_SearchLayoyt_1: React.FC<Client_SearchLayoyt_1Props> = ({
 							code={item.code}
 							onViewShortDetail={() => {
 								setSelectedItemKey(item);
+							}}
+							onAddToCard={() => {
+								try {
+									cart.onAddToCart(item);
+									toast(item.name, {
+										description: 'Position has been added to cart',
+										action: {
+											label: 'Go to card',
+											onClick: () => {
+												router.push('/account/cart');
+											},
+										},
+										duration: 2000,
+									});
+								} catch (error) {
+									toast(item.name, {
+										description: error as string,
+										action: {
+											label: 'Go to card',
+											onClick: () => {
+												router.push('/account/cart');
+											},
+										},
+										duration: 1000,
+									});
+								}
 							}}
 						/>
 					))}

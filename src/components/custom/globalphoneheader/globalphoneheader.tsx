@@ -75,7 +75,7 @@ export const GlobalPhoneHeader: React.FC<IGlobalPhoneHeaderProps> = ({
 							<DrawerTitle>Navigation menu</DrawerTitle>
 						</DrawerHeader>
 						<ul className="px-[1rem] font-spacemono flex flex-col gap-[0.5rem]">
-							<Link href={'/profile'}>
+							<Link href={'/account'}>
 								<div className="rounded border w-full px-[3%] py-[0.5rem] flex gap-[1rem] transition-all hover:bg-lime-500/10 hover:shadow-xl hover:shadow-lime-500/10">
 									<FontAwesomeIcon
 										icon={faUserCircle}

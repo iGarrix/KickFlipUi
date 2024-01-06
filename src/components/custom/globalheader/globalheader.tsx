@@ -77,7 +77,7 @@ export const GlobalHeader: React.FC<IGlobalHeaderProps> = ({ ...props }) => {
 			<button
 				className="flex flex-col items-center gap-[0.5rem] w-full px-[1rem] py-[1.5rem] transition-all hover:bg-dark/5"
 				onClick={() => {
-					router.push('/profile/cart');
+					router.push('/account/cart');
 				}}>
 				<FontAwesomeIcon icon={faCartPlus} />
 				<p className="text-sm">Cart</p>
@@ -85,7 +85,7 @@ export const GlobalHeader: React.FC<IGlobalHeaderProps> = ({ ...props }) => {
 			<button
 				className="flex flex-col items-center gap-[0.5rem] w-full px-[1rem] py-[1.5rem] transition-all hover:bg-dark/5"
 				onClick={() => {
-					router.push('/profile');
+					router.push('/account');
 				}}>
 				<FontAwesomeIcon icon={faUserGear} />
 				<p className="text-sm">Profile</p>
