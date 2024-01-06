@@ -17,7 +17,7 @@ export default function Checkout() {
 					{
 						status: 'still',
 						title: 'Select positions',
-						children: <div className="py-[1rem]">fdgdfgfdgdf</div>,
+						children: <div className="py-[1rem]">from checkout 2 to main</div>,
 					},
 					{
 						status: 'noview',
