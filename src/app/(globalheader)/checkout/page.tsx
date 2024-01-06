@@ -39,7 +39,7 @@ export default function Checkout() {
 			<div className="w-[30%] h-min max-h-[60vh] bg-gold sticky top-[10vh] font-spacemono flex flex-col flex-wrap gap-[1rem] p-[1.5rem] rounded-sm">
 				<h2 className="text-2xl font-black">Checkout</h2>
 				<div className="flex justify-between gap-[1rem] font-semibold text-[16px]">
-					<p>Total1</p>
+					<p>Sorr Total1</p>
 					<p className="flex gap-[1rem] items-center">
 						<FontAwesomeIcon icon={faEuro} />
 						<span>{Number('200').toFixed(2)}</span>
