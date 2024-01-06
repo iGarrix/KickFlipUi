@@ -22,7 +22,7 @@ export default function Checkout() {
 					{
 						status: 'noview',
 						title: 'Promocodes',
-						children: <div className="py-[1rem]">1232323</div>,
+						children: <div className="py-[1rem]">Test checkout step 2</div>,
 					},
 					{
 						status: 'noview',
