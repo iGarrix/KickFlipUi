@@ -6,7 +6,7 @@ const nextConfig = {
 	swcMinify: true,
 	optimizeFonts: true,
 	images: {
-		domains: ['127.0.0.1'],
+		domains: ['127.0.0.1', 'https://kick-flip-ui.vercel.app'],
 		remotePatterns: [
 			{
 				protocol: 'https',
