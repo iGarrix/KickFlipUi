@@ -32,7 +32,7 @@ export default async function ClothingPage(props: {
 	return (
 		<Fragment>
 			<br />
-			<div className="flex items-center gap-[1rem] w-[calc(70%-2rem)] mr-auto">
+			<div className="flex items-center gap-[1rem] w-[calc(70%-2rem)] mr-auto flex-wrap">
 				<h1 className="font-spacemono font-semibold text-xl line-clamp-1">
 					{props.searchParams.s
 						? `Found ${data?.meta.total} items in ${data?.meta.lastPage} ${

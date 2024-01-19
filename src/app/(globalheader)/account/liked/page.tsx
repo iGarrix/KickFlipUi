@@ -39,7 +39,7 @@ export default function LikedPage() {
 						key={key}
 						src={GetPositionImage(item.image[0]?.src)}
 						onDelete={() => {
-							liked.onRemoveFromCart(item.code);
+							liked.onRemoveFromLiked(item.code);
 							toast(item.name, {
 								description: 'Position has been removed from liked',
 							});

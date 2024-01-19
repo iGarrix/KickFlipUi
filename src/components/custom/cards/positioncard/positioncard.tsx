@@ -23,7 +23,7 @@ export const PositionCard: React.FC<IPositionCardProps> = ({ ...props }) => {
 				<span>Shipping from {props.shipping}</span>
 			</aside>
 			<aside className="flex p-[1rem] items-center gap-[2rem] pr-[2rem]">
-				<Avatar className="min-w-[150px] w-[150px] h-[150px]">
+				<Avatar className="min-w-[150px] w-[150px] h-[150px] xs:hidden sm:block">
 					<AvatarImage
 						className="w-full h-full object-cover bg-cover bg-center"
 						src={props.src}
@@ -41,7 +41,7 @@ export const PositionCard: React.FC<IPositionCardProps> = ({ ...props }) => {
 						{props.description}
 					</p>
 					<br />
-					<div className="flex items-start gap-[1rem] font-semibold text-sm">
+					<div className="flex items-start gap-[1rem] font-semibold text-sm xs:flex-col sm:flex-row">
 						<button
 							className="text-blue-500 transition-all hover:text-indigo-600 outline-none"
 							onClick={() => {

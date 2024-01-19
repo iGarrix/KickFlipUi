@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client';
 
 import {
@@ -13,24 +14,22 @@ import {
 	faUserCircle,
 	faUserGear,
 } from '@fortawesome/free-solid-svg-icons';
-import { faShoelace } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 import {
 	Drawer,
-	DrawerClose,
 	DrawerContent,
-	DrawerDescription,
 	DrawerFooter,
 	DrawerHeader,
 	DrawerTitle,
 	DrawerTrigger,
 } from '@/components/ui/drawer';
-import { Button } from '@/components/ui/button';
 import { Btn } from '../Btn/btn';
-
+import { useAuth } from '@/components/Providers/AuthProvider/AuthProvider';
+import { Logout } from '@/lib/apis/auth/auth.controller';
+import { toast } from 'sonner';
 //import style from './scss.style.module.scss';
 
 interface IGlobalPhoneHeaderProps {}
@@ -42,6 +41,18 @@ export const GlobalPhoneHeader: React.FC<IGlobalPhoneHeaderProps> = ({
 	const pathname = usePathname();
 
 	const [drawer, setDrawer] = useState(false);
+	const auth = useAuth();
+
+	async function logout() {
+		if (auth && auth.accessToken) {
+			await Logout(auth.accessToken);
+			auth.onSignIn(null);
+			auth.onSignToken(null);
+			toast('Authentication logout', {
+				description: 'Log out of account successfully',
+			});
+		}
+	}
 	return (
 		<Fragment>
 			<ul className="fixed bottom-0 left-0 w-full grid grid-cols-4 h-[4rem] items-center whitespace-nowrap overflow-y-auto z-20 bg-light/90 border-t border-t-dark/20 rounded-t-md backdrop-blur hidescrollbar xs:grid lg:hidden">
@@ -51,13 +62,13 @@ export const GlobalPhoneHeader: React.FC<IGlobalPhoneHeaderProps> = ({
 						<p className="text-sm">In New</p>
 					</li>
 				</Link>
-				<Link href={'/profile/liked'}>
+				<Link href={'/account/liked'}>
 					<li className="text-center py-[0.5rem] transition-all text-dark hover:text-yellow-500">
 						<FontAwesomeIcon icon={faHeart} />
 						<p className="text-sm">Liked</p>
 					</li>
 				</Link>
-				<Link href={'/profile/cart'}>
+				<Link href={'/account/cart'}>
 					<li className="text-center py-[0.5rem] transition-all text-dark hover:text-yellow-500">
 						<FontAwesomeIcon icon={faCartPlus} />
 						<p className="text-sm">Cart</p>
@@ -75,18 +86,37 @@ export const GlobalPhoneHeader: React.FC<IGlobalPhoneHeaderProps> = ({
 							<DrawerTitle>Navigation menu</DrawerTitle>
 						</DrawerHeader>
 						<ul className="px-[1rem] font-spacemono flex flex-col gap-[0.5rem]">
-							<Link href={'/account'}>
-								<div className="rounded border w-full px-[3%] py-[0.5rem] flex gap-[1rem] transition-all hover:bg-lime-500/10 hover:shadow-xl hover:shadow-lime-500/10">
+							{auth.user ? (
+								<Link
+									href={'/account'}
+									onClick={() => {
+										setDrawer(false);
+									}}>
+									<div className="rounded border w-full px-[3%] py-[0.5rem] flex gap-[1rem] transition-all hover:bg-lime-500/10 hover:shadow-xl hover:shadow-lime-500/10">
+										<FontAwesomeIcon
+											icon={faUserCircle}
+											className="text-lime-500 w-[40px] h-[40px] text-center text-5xl"
+										/>
+										<div>
+											<h3 className="font-semibold text-xl">Username</h3>
+											<p className="text-sm text-neutral-500">user@gmail.com</p>
+										</div>
+									</div>
+								</Link>
+							) : (
+								<div className="rounded border w-full px-[3%] py-[0.5rem] flex gap-[1rem] transition-all hover:bg-rose-500/10 hover:shadow-xl hover:shadow-rose-500/10">
 									<FontAwesomeIcon
 										icon={faUserCircle}
-										className="text-lime-500 w-[40px] h-[40px] text-center text-5xl"
+										className="text-rose-500 w-[40px] h-[40px] text-center text-5xl"
 									/>
 									<div>
-										<h3 className="font-semibold text-xl">Username</h3>
-										<p className="text-sm text-neutral-500">user@gmail.com</p>
+										<h3 className="font-semibold text-xl">You aren't logged</h3>
+										<p className="text-sm text-neutral-500">
+											Sign in to purchase something
+										</p>
 									</div>
 								</div>
-							</Link>
+							)}
 							<Link
 								href={'/clothing'}
 								onClick={() => {
@@ -149,9 +179,25 @@ export const GlobalPhoneHeader: React.FC<IGlobalPhoneHeaderProps> = ({
 							</Link>
 						</ul>
 						<DrawerFooter>
-							<Btn className="bg-rose-500 rounded hover:border-rose-500 hover:text-rose-500">
-								Log out
-							</Btn>
+							{auth.user ? (
+								<Btn
+									className="bg-rose-500 rounded hover:border-rose-500 hover:text-rose-500"
+									onClick={async () => {
+										await logout();
+										setDrawer(false);
+									}}>
+									Log out
+								</Btn>
+							) : (
+								<Btn
+									className="bg-lime-500 rounded hover:border-lime-500 hover:text-lime-500"
+									onClick={() => {
+										router.push('/account');
+										setDrawer(false);
+									}}>
+									Sign in
+								</Btn>
+							)}
 						</DrawerFooter>
 					</DrawerContent>
 				</Drawer>
