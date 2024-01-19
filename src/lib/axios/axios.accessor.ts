@@ -6,7 +6,7 @@ const agent = new https.Agent({
 });
 
 const axiosHttp_instance = axios.create({
-	httpsAgent: agent,
+	//httpsAgent: agent,
 	baseURL:
 		process.env.NODE_ENV === 'development'
 			? process.env.NEXT_PUBLIC_TEST_API_URL
